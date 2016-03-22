@@ -42,7 +42,7 @@ Meteor.Collection.prototype.maximum = function(attr) {
   }
 }
 
-Meteor.Collection.prototype.maximum = function(attr) {
+Meteor.Collection.prototype.minimum = function(attr) {
   if(Meteor.isClient){
     return _.min(this.find().fetch(), function(obj){
       return obj[attr]
