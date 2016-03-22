@@ -2,30 +2,60 @@ This package includes some common query interface methods
 
 Let's assume a User collection with a created_at field
 
-List of methods.
+## List of methods.
 
-Methods to handle time
+### Methods to handle time
 
-1) User.afterDays('created_at', 7) // will give you results between today and 7 days from now
+#### 1) #afterDays
 
-2) User.beforeDays('created_at', 7) // will give you results between 7 days from now(past) and today.
+`User.afterDays('created_at', 7)` // Finds all records occurring after the given time
 
-3) User.betweenDays(attr, 1, 3) // will give you results between 1 day from now and 3 days from now (you may also provide negative values)
+#### 2) #beforeDays
 
-5) User.today(attr)
+`User.beforeDays('created_at', 7)` // Finds all records occurring before the given time
 
-6) User.yesterday(attr)
+#### 3) #betweenDays
 
-7) User.tomorrow(attr)
+`User.betweenDays(attr, 1, 3)` // Finds all records occurring between given time
 
-8) User.pastWeek(attr)
+#### 5) #today
 
-9) User.pastMonth(attr)
+`User.today(attr)`
 
-10) User.nextMonth(attr)
+#### 6) #yesterday
 
-10) User.maximum(attr) // returns maximum value of attr in User collection
+`User.yesterday(attr)`
 
-10) User.minimum(attr) // returns minimum value of attr in User collection
+#### 7) #tomorrow
 
-10) User.sum(attr) // returns sum value of attr in User collection
+`User.tomorrow(attr)`
+
+#### 8) #pastWeek
+
+`User.pastWeek(attr)`
+
+#### 9) #pastMonth
+
+`User.pastMonth(attr)`
+
+#### 10) #nextMonth
+
+`User.nextMonth(attr)`
+
+### Methods to handle calculations
+
+#### 11) #maximum
+
+`User.maximum(attr)` // returns maximum value of attr in User collection
+
+#### 12) #minimum
+
+`User.minimum(attr)` // returns minimum value of attr in User collection
+
+#### 13) #sum
+
+`User.sum(attr)` // returns sum value of attr in User collection
+
+#### 13) #average
+
+`User.average(attr)` // returns sum value of attr in User collection

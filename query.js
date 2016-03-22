@@ -39,6 +39,15 @@ Meteor.Collection.prototype.maximum = function(attr) {
     return _.max(this.find().fetch(), function(obj){
       return obj[attr]
     })
+  } else {
+    this.aggregate([ {
+      $group: {
+        _id: null,
+        total: {
+          $max: '$' + attr
+        }
+      }
+    } ] )
   }
 }
 
@@ -47,6 +56,15 @@ Meteor.Collection.prototype.minimum = function(attr) {
     return _.min(this.find().fetch(), function(obj){
       return obj[attr]
     })
+  } else {
+    this.aggregate([ {
+      $group: {
+        _id: null,
+        total: {
+          $min: '$' + attr
+        }
+      }
+    } ] )
   }
 }
 
@@ -60,7 +78,14 @@ Meteor.Collection.prototype.sum = function(attr) {
     })
     return sum;
   } else {
-
+    this.aggregate([ {
+      $group: {
+        _id: null,
+        total: {
+          $sum: '$' + attr
+        }
+      }
+    } ] )
   }
 }
 
@@ -69,7 +94,14 @@ Meteor.Collection.prototype.average = function(attr) {
     var count = this.find({}, {fields: {[attr]: 1}}).count();
     return this.sum(attr) / count;
   } else {
-
+    this.aggregate([ {
+      $group: {
+        _id: null,
+        total: {
+          $avg: '$' + attr
+        }
+      }
+    } ] )
   }
 }
 
